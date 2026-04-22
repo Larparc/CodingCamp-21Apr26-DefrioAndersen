@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodingCamp-21Apr26-DefrioAndersen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body class="min-h-screen font-sans p-6 flex flex-col gap-4">
+
+    <section class="bg-white border border-gray-200 rounded-xl p-5 text-center">
+        <p id="time" class="text-4xl font-bold tracking-wide" style="color:#b06ee8"></p>
+        <p id="date" class="text-sm text-gray-500 mt-1"></p>
+        <h1 class="text-2xl font-bold mt-2" style="color:#b06ee8">Good Morning</h1>
+    </section>
+
+    <div class="flex gap-4">
+        <section class="bg-white border border-gray-200 rounded-xl p-5 flex-1 text-center">
+            <h2 class="text-lg font-semibold mb-2">Focus Timer</h2>
+            <div class="timer-display" id="timerDisplay" contenteditable="false" title="Klik untuk edit saat timer berhenti">05:00</div>
+            <div class="flex gap-2 justify-center flex-wrap mt-2">
+                <button id="startBtn" onclick="startTimer()"
+                    class="px-4 py-2 text-sm text-white rounded-md cursor-pointer border-0"
+                    style="background:#b06ee8">Start</button>
+                <button id="stopBtn" onclick="stopTimer()" disabled
+                    class="px-4 py-2 text-sm text-white rounded-md border-0"
+                    style="background:#aaa; cursor:not-allowed">Stop</button>
+                <button onclick="resetTimer()"
+                    class="px-4 py-2 text-sm text-white rounded-md cursor-pointer border-0"
+                    style="background:#b06ee8">Reset</button>
+            </div>
+        </section>
+
+        <section class="bg-white border border-gray-200 rounded-xl p-5 flex-1">
+            <h2 class="text-lg font-semibold mb-3">Task</h2>
+            <div class="flex gap-2 mb-4">
+                <input type="text" id="taskInput" placeholder="Tulis task baru..."
+                    class="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-md outline-none" />
+                <button onclick="addTask()"
+                    class="px-4 py-2 text-sm text-white rounded-md cursor-pointer border-0"
+                    style="background:#b06ee8">Add</button>
+            </div>
+            <ul id="taskList" class="flex flex-col gap-2 list-none p-0 m-0"></ul>
+        </section>
+    </div>
+
+    <div class="flex">
+        <section class="bg-white border border-gray-200 rounded-xl p-5" style="width:calc(50% - 8px)">
+            <h2 class="text-lg font-semibold mb-3">Quick Links</h2>
+            <div class="flex gap-2 mb-4 flex-wrap">
+                <input type="text" id="linkName" placeholder="Link name"
+                    class="flex-1 min-w-[120px] px-3 py-2 text-sm border border-gray-300 rounded-md outline-none" />
+                <input type="text" id="linkUrl" placeholder="URL"
+                    class="flex-1 min-w-[120px] px-3 py-2 text-sm border border-gray-300 rounded-md outline-none" />
+                <button onclick="addLink()"
+                    class="px-4 py-2 text-sm text-white rounded-md cursor-pointer border-0"
+                    style="background:#b06ee8">Add</button>
+            </div>
+            <div id="linkGrid" class="flex flex-wrap gap-2"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
