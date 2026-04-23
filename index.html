@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Dashboard</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+    <!-- Settings Bar -->
+    <div class="settings-bar">
+        <button id="themeToggle" class="btn-icon" title="Toggle Dark Mode">🌙</button>
+        <button id="settingsBtn" class="btn-icon" title="Settings">⚙️</button>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-overlay hidden">
+        <div class="modal">
+            <h2 class="modal-title">Settings</h2>
+
+            <div class="setting-group">
+                <label class="setting-label">Your Name (for greeting)</label>
+                <div class="input-row" style="margin-bottom:0">
+                    <input type="text" id="nameInput" placeholder="Enter your name..." class="text-input" />
+                    <button onclick="saveName()" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+
+            <button onclick="closeSettings()" class="btn btn-primary" style="margin-top:16px;width:100%">Close</button>
+        </div>
+    </div>
+
+    <!-- Greeting Card -->
+    <section class="card text-center">
+        <p id="time" class="time-display"></p>
+        <p id="date" class="date-display"></p>
+        <h1 id="greeting" class="greeting"></h1>
+    </section>
+
+    <div class="row-2col">
+        <!-- Timer -->
+        <section class="card text-center">
+            <h2 class="section-title">Focus Timer (Click for edit)</h2>
+            <div class="timer-display" id="timerDisplay" contenteditable="false" title="Klik untuk edit saat timer berhenti">25:00</div>
+            <div class="timer-buttons">
+                <button id="startBtn" onclick="startTimer()" class="btn btn-primary">Start</button>
+                <button id="stopBtn" onclick="stopTimer()" disabled class="btn btn-disabled">Stop</button>
+                <button onclick="resetTimer()" class="btn btn-primary">Reset</button>
+            </div>
+        </section>
+
+        <!-- Tasks -->
+        <section class="card">
+            <div class="task-header">
+                <h2 class="section-title" style="margin-bottom:0">Task</h2>
+                <select id="sortSelect" class="sort-select" onchange="sortTasks()">
+                    <option value="default">Sort: Default</option>
+                    <option value="az">Sort: A → Z</option>
+                    <option value="za">Sort: Z → A</option>
+                    <option value="done">Sort: Done Last</option>
+                    <option value="undone">Sort: Done First</option>
+                </select>
+            </div>
+            <div class="input-row" style="margin-top:12px">
+                <input type="text" id="taskInput" placeholder="Tulis task baru..." class="text-input" />
+                <button onclick="addTask()" class="btn btn-primary">Add</button>
+            </div>
+            <div id="duplicateWarning" class="duplicate-warning hidden">⚠️ Task already exists!</div>
+            <ul id="taskList" class="task-list"></ul>
+        </section>
+    </div>
+
+    <div class="row-half">
+        <!-- Quick Links -->
+        <section class="card">
+            <h2 class="section-title">Quick Links</h2>
+            <div class="input-row input-row-wrap">
+                <input type="text" id="linkName" placeholder="Link name" class="text-input" />
+                <input type="text" id="linkUrl" placeholder="URL" class="text-input" />
+                <button onclick="addLink()" class="btn btn-primary">Add</button>
+            </div>
+            <div id="linkGrid" class="link-grid"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
